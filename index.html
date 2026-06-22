@@ -395,7 +395,7 @@
   burger.addEventListener('click', () => toggleMenu());
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
   if (reduce){ document.querySelectorAll('.reveal').forEach(el => { el.style.opacity=1; el.style.transform='none'; }); return; }
-  const lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+  const lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
   gsap.registerPlugin(ScrollTrigger);
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
